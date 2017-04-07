@@ -53,7 +53,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-let g:airline_theme='badwolf'
+let g:airline_theme='murmur'
 
 " Get base16 colors from shell
 if filereadable(expand("~/.vimrc_background"))
@@ -66,8 +66,6 @@ imap jk <esc>
 cmap jk <C-c>
 colorscheme base16-3024
 set cursorline
-let base16colorspace=256
-set t_Co=256
 hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
 "hi CursorLine   cterm=NONE ctermbg=52 ctermfg=NONE
 set number
@@ -84,7 +82,9 @@ set mouse=a
 hi Normal ctermbg=none
 hi NonText ctermbg=none
 
+"Vim-latex pdf viewer
 let g:Tex_ViewRule_pdf = 'evince'
+
 "No tmux auto-paste:
 "let &t_SI .= "\<Esc>[?2004h"
 "let &t_EI .= "\<Esc>[?2004l"
