@@ -62,7 +62,8 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 syntax on
-inoremap jk <esc>
+imap jk <esc>
+cmap jk <C-c>
 colorscheme base16-3024
 set cursorline
 let base16colorspace=256
