@@ -61,13 +61,15 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-syntax on
 imap jk <esc>
 cmap jk <C-c>
 colorscheme base16-3024
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
-"hi CursorLine   cterm=NONE ctermbg=52 ctermfg=NONE
+set cursorcolumn
+"hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
+"hi CursorColumn   cterm=NONE ctermbg=236 ctermfg=NONE
+
+syntax on
 set number
 set autoindent
 set smartindent
@@ -76,7 +78,6 @@ set softtabstop=0 noexpandtab
 set shiftwidth=4
 set laststatus=2
 set ttimeoutlen=50
-set mouse=a
 
 " disables opaque background                                                
 hi Normal ctermbg=none
@@ -121,6 +122,7 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 let g:airline_powerline_fonts = 1
 
+"syntax checkers (might delete later, never use)
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': []  }
 nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
