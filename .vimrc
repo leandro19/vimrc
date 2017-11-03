@@ -18,6 +18,7 @@ Plugin 'ervandew/supertab'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'chriskempson/base16-vim'
+Plugin 'conradirwin/vim-bracketed-paste'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -85,40 +86,6 @@ hi NonText ctermbg=none
 
 "Vim-latex pdf viewer
 let g:Tex_ViewRule_pdf = 'evince'
-
-"No tmux auto-paste:
-"let &t_SI .= "\<Esc>[?2004h"
-"let &t_EI .= "\<Esc>[?2004l"
-"inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
-"
-"function! XTermPasteBegin()
-"  set pastetoggle=<Esc>[201~
-"  set paste
-"  return ""
-"endfunction
-
-"With tmux auto-paste
-function! WrapForTmux(s)
-  if !exists('$TMUX')
-    return a:s
-  endif
-
-  let tmux_start = "\<Esc>Ptmux;"
-  let tmux_end = "\<Esc>\\"
-
-  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-endfunction
-
-let &t_SI .= WrapForTmux("\<Esc>[?2004h")
-let &t_EI .= WrapForTmux("\<Esc>[?2004l")
-
-function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
-endfunction
-
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 let g:airline_powerline_fonts = 1
 
