@@ -63,7 +63,9 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 imap jk <esc>
+imap JK <esc>
 cmap jk <C-c>
+cmap JK <C-c>
 colorscheme base16-3024
 set cursorline
 set cursorcolumn
