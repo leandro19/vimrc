@@ -9,16 +9,14 @@ call vundle#begin()
 "
 "  let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-surround'
+Plugin 'conradirwin/vim-bracketed-paste'
+Plugin 'ervandew/supertab'
+Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'ervandew/supertab'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'chriskempson/base16-vim'
-Plugin 'conradirwin/vim-bracketed-paste'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -56,26 +54,21 @@ filetype plugin indent on    " required
 
 let g:airline_theme='murmur'
 
-" Get base16 colors from shell
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
 imap jk <esc>
 imap JK <esc>
 cmap jk <C-c>
 cmap JK <C-c>
-colorscheme base16-3024
-set cursorline
-set cursorcolumn
+colorscheme elflord
+
+"row/column highlight settings
+"set cursorline
+"set cursorcolumn
 "hi CursorLine   cterm=NONE ctermbg=236 ctermfg=NONE
 "hi CursorColumn   cterm=NONE ctermbg=236 ctermfg=NONE
 
+"syntax highlighting and tab spacing
 syntax on
 set number
-set autoindent
-set smartindent
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
@@ -89,46 +82,21 @@ hi NonText ctermbg=none
 "Vim-latex pdf viewer
 let g:Tex_ViewRule_pdf = 'evince'
 
-let g:airline_powerline_fonts = 1
-
-"syntax checkers (might delete later, never use)
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': []  }
-nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_loc_list_height = 3
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_c_checkers = ['avrgcc', 'checkpatch', 'clang_check', 'clang_tidy', 'cppcheck', 'gcc', 'make', 'oclint', 'pc_lint', 'sparse', 'splint']
-let g:syntastic_cpp_checkers = ['avrgcc', 'clang_check', 'clang_tidy', 'cppcheck', 'cpplint', 'gcc', 'oclint', 'pc_lint', 'verapp']
-let g:syntastic_cs_checkers = ['mcs']
-let g:syntastic_java_checkers = ['checkstyle', 'javac']
-let g:syntastic_javascript_checkers = ['closurecompiler', 'eslint', 'flow', 'gjslint', 'jsl', 'jscs', 'jshint', 'jslint', 'jsxhint', 'mixedindentlint', 'standard', 'tern_lint']
-let g:syntastic_python_checkers = ['flake8', 'frosted', 'mypy', 'prospector', 'py3kwarn', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylama', 'pylint', 'python']
-"let g:syntastic_mode_map = { 'passive_filetypes': ['tex']  }
+"let g:airline_powerline_fonts = 1
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+"filetype plugin on (commented out because it's already on)
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf, aux'
 
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
 " can be called correctly.
-set shellslash
+" set shellslash
 
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
