@@ -17,6 +17,7 @@ Plugin 'LaTeX-Suite-aka-Vim-LaTeX'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-tmux-navigator'
 "
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -52,7 +53,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"vim statusline settings
 let g:airline_theme='murmur'
+let g:airline_powerline_fonts = 1
+let g:airline_symbols = {}
+let g:airline_symbols.linenr = 'Ξ'
+"let g:airline_symbols_ascii = 1
 
 imap jk <esc>
 imap JK <esc>
